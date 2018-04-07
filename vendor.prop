@@ -67,6 +67,10 @@ persist.ts.rtmakeup=false
 # CNE
 persist.cne.feature=1
 
+# Core control
+ro.vendor.qti.core_ctl_min_cpu=2
+ro.vendor.qti.core_ctl_max_cpu=4
+
 # Data
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
@@ -112,9 +116,6 @@ persist.media.treble_omx=true
 # NFC
 ro.nfc.port=I2C
 persist.nfc.smartcard.config=SIM1,eSE1
-
-# OTG support
-persist.sys.oem.otg_support=true
 
 # Perf
 ro.sys.fw.bg_apps_limit=60
@@ -166,23 +167,6 @@ persist.vendor.radio.ignore_dom_time=10
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
 
-persist.vendor.radio.force_on_dc=true
-persist.radio.custom_ecc=1
-persist.radio.data_con_rprt=1
-persist.radio.data_ltd_sys_ind=1
-persist.radio.ignore_dom_time=10
-persist.radio.rat_on=combine
-persist.radio.sib16_support=1
-persist.radio.RATE_ADAPT_ENABLE=1
-persist.radio.ROTATION_ENABLE=1
-persist.radio.VT_ENABLE=1
-persist.radio.VT_HYBRID_ENABLE=1
-persist.radio.is_wps_enabled=true
-persist.radio.videopause.mode=1
-persist.radio.sap_silent_pin=1
-persist.radio.always_send_plmn=true
-persist.rcs.supported=1
-
 # RmNet Data
 persist.rmnet.data.enable=true
 persist.data.wda.enable=true
@@ -210,13 +194,6 @@ persist.timed.enable=true
 sys.usb.controller=a800000.dwc3
 sys.usb.rndis.func.name=gsi
 sys.usb.rmnet.func.name=gsi
-
-# VoLTE
-persist.dbg.ims_volte_enable=1
-persist.dbg.volte_avail_ovr=1
-persist.dbg.vt_avail_ovr=1
-persist.dbg.wfc_avail_ovr=1
-persist.radio.calls.on.ims=1
 
 # Wi-Fi
 wifi.interface=wlan0
