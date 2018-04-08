@@ -1,4 +1,5 @@
-# Alipay
+]# executables
+/sbin/dashd                                                     u:object_r:dashd_exec:s0
 /system/bin/ifaadaemon                                          u:object_r:ifaadaemon_exec:s0
 
 # Block devices
