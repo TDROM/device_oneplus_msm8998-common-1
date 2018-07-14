@@ -91,7 +91,7 @@
     <!-- Array of output values for button backlight corresponding to the LUX values
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
-         This must be overridden in platform specific overlays 
+         This must be overridden in platform specific overlays
     <integer-array name="config_autoBrightnessButtonBacklightValues">
         <item>0</item>
         <item>0</item>
@@ -333,8 +333,11 @@
     <!-- Flag indicating emergency calls will always use IMS irrespective of the state of
     the IMS connection -->
 
-    <!-- Flag specifying whether VoLTE & VT is available on device -->
+    <!-- Flag specifying whether VoLTE is available on device -->
     <bool name="config_device_volte_available">true</bool>
+
+    <!-- Flag specifying whether VideoTelephony is available on device -->
+    <bool name="config_device_vt_available">true</bool>
 
     <!-- Flag specifying whether VoLTE should be available for carrier: independent of
          carrier provisioning. If false: hard disabled. If true: then depends on carrier
@@ -393,6 +396,8 @@
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
 
     <string-array name="config_mobile_tcp_buffers">
+        <item>lte:524288,1048576,8388608,262144,524288,4194304</item>
+        <item>lte_ca:524288,1048576,8388608,4096,1048576,4194304</item>
         <item>umts:131072,262144,1452032,4096,16384,399360</item>
         <item>hspa:131072,262144,2441216,4096,16384,399360</item>
         <item>hsupa:131072,262144,2441216,4096,16384,399360</item>
@@ -402,7 +407,6 @@
         <item>gprs:4096,8192,24576,4096,8192,24576</item>
         <item>1xrtt:16384,32768,131070,4096,16384,102400</item>
         <item>evdo:131072,262144,1048576,4096,16384,524288</item>
-        <item>lte:524288,1048576,8388608,262144,524288,4194304</item>
     </string-array>
 
     <!-- Configure wifi tcp buffersizes in the form:
