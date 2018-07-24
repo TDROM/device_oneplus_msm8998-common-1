@@ -1,0 +1,12 @@
+[
+  {
+    "repository":  "Singularity-Kernel",
+    "target_path": "kernel/oneplus/msm8998",
+    "branch":      "oc-mr2"
+  },
+  {
+    "repository":  "AEX-DUMPLING/vendor_oneplus",
+    "target_path": "vendor/oneplus",
+    "branch":      "oc-mr2"
+  }
+]

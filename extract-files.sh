@@ -22,9 +22,9 @@ set -e
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+AOSP_ROOT="$MY_DIR"/../../..
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
+HELPER="$AOSP_ROOT"/vendor/aosp/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -53,7 +53,7 @@ if [ -z "$SRC" ]; then
 fi
 
 # Initialize the helper
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true "$CLEAN_VENDOR"
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$AOSP_ROOT" true "$CLEAN_VENDOR"
 
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
 extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC" "$SECTION"
@@ -61,7 +61,7 @@ extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 
 if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
     # Reinitialize the helper for device
-    setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false "$CLEAN_VENDOR"
+    setup_vendor "$DEVICE" "$VENDOR" "$AOSP_ROOT" false "$CLEAN_VENDOR"
 
     extract "$MY_DIR"/../$DEVICE/proprietary-files.txt "$SRC" "$SECTION"
 fi
@@ -69,7 +69,7 @@ fi
 function fix_camera_etc_path () {
     sed -i \
         's/\/system\/etc\//\/vendor\/etc\//g' \
-        "$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary/"$1"
+        "$AOSP_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary/"$1"
 }
 
 fix_camera_etc_path vendor/lib/libmmcamera_imglib.so
@@ -79,7 +79,7 @@ fix_camera_etc_path vendor/lib/libopcamera_native_modules.so
 function fix_radio_framework_path () {
     sed -i \
         's/\/system\/framework\//\/vendor\/framework\//g' \
-        "$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary/"$1"
+        "$AOSP_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary/"$1"
 }
 
 fix_radio_framework_path vendor/etc/permissions/embms.xml

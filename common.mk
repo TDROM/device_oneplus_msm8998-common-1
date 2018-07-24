@@ -83,10 +83,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml \
     frameworks/native/data/etc/android.hardware.vr.headtracking-0.xml:system/etc/permissions/android.hardware.vr.headtracking-0.xml
 
-# Device was launched with N
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.first_api_level=25
-
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
@@ -159,10 +155,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0_vendor
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/vendor/lib/libmmcamera2_mct.so:system/vendor/lib/libmmcamera2_mct.so \
-    $(LOCAL_PATH)/prebuilts/vendor/lib/libmmcamera_imx371.so:system/vendor/lib/libmmcamera_imx371.so
-
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
     cneapiclient \
@@ -211,8 +203,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
-    fingerprintd \
-    OneplusPocketMode
+    fingerprintd 
 
 # For android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -294,14 +285,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.oneplus_8998
-
-# LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm \
-    vendor.lineage.livedisplay-V1.0-java
-
-PRODUCT_BOOT_JARS += \
-    vendor.lineage.livedisplay-V1.0-java
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -429,6 +412,7 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
 
+# Vendor move
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/sgdisk-op5:install/bin/sgdisk-op5 \
     $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
@@ -437,11 +421,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
     com.android.future.usb.accessory
-
-# Vendor move
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bin/sgdisk-op5:install/bin/sgdisk-op5 \
-    $(LOCAL_PATH)/prebuilt/bin/unlock-vendor.sh:install/bin/unlock-vendor.sh
 
 # Vibrator
 PRODUCT_PACKAGES += \
