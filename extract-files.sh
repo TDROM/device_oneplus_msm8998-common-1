@@ -72,19 +72,54 @@ function fix_camera_etc_path () {
         "$AOSP_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary/"$1"
 }
 
-fix_camera_etc_path vendor/lib/libmmcamera_imglib.so
-fix_camera_etc_path vendor/lib/libmmcamera_interface.so
-fix_camera_etc_path vendor/lib/libopcamera_native_modules.so
+# Camera
+fix_vendor etc lib/libmmcamera_imglib.so
+fix_vendor etc lib/libmmcamera_interface.so
+fix_vendor etc lib/libopcamera_native_modules.so
 
-function fix_radio_framework_path () {
-    sed -i \
-        's/\/system\/framework\//\/vendor\/framework\//g' \
-        "$AOSP_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary/"$1"
-}
+# CNE
+fix_vendor etc lib/libwqe.so
+fix_vendor etc lib64/libwqe.so
+fix_vendor framework etc/permissions/cneapiclient.xml
+fix_vendor framework etc/permissions/com.quicinc.cne.xml
 
-fix_radio_framework_path vendor/etc/permissions/embms.xml
-fix_radio_framework_path vendor/etc/permissions/qcnvitems.xml
-fix_radio_framework_path vendor/etc/permissions/qcrilhook.xml
-fix_radio_framework_path vendor/etc/permissions/telephonyservice.xml
+# DPM
+fix_vendor bin etc/init/dpmd.rc
+fix_vendor etc lib/libdpmframework.so
+fix_vendor etc lib64/libdpmframework.so
+fix_vendor framework etc/permissions/com.qti.dpmframework.xml
+fix_vendor framework etc/permissions/dpmapi.xml
+
+# Fingerprint sensor
+fix_vendor framework etc/permissions/com.fingerprints.extension.xml
+
+# GPS
+fix_vendor framework etc/permissions/com.qti.location.sdk.xml
+fix_vendor framework etc/permissions/izat.xt.srv.xml
+
+# Postprocessing
+fix_vendor framework etc/permissions/com.qti.snapdragon.sdk.display.xml
+
+# Radio
+fix_vendor framework etc/permissions/embms.xml
+fix_vendor framework etc/permissions/qcnvitems.xml
+fix_vendor framework etc/permissions/qcrilhook.xml
+fix_vendor framework etc/permissions/telephonyservice.xml
+
+# OpenMobile
+fix_vendor framework etc/permissions/org.simalliance.openmobileapi.xml
+
+# Wi-Fi Display
+fix_vendor etc lib/libwfdrtsp.so
+fix_vendor etc lib/libwfdservice.so
+fix_vendor etc lib/libwfdsm.so
+fix_vendor etc lib/libwfduibcsinkinterface.so
+fix_vendor etc lib/libwfduibcsrcinterface.so
+fix_vendor etc lib64/libwfdrtsp.so
+fix_vendor etc lib64/libwfdservice.so
+fix_vendor etc lib64/libwfdsm.so
+fix_vendor etc lib64/libwfduibcsinkinterface.so
+fix_vendor etc lib64/libwfduibcsrcinterface.so
+fix_vendor framework etc/init/wfdservice.rc
 
 "$MY_DIR"/setup-makefiles.sh
